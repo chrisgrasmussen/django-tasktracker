@@ -1,0 +1,21 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+
+}
+
+.extra {
+    padding-top: 25vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    min-height: 75px;
+}
+
+.extratwo {
+    padding-right: 40px;
+}

@@ -1,0 +1,59 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+    <head>
+        <link rel="stylesheet" type='text/css' media='screen' href="http://www.bootswatch.com/5/morph/bootstrap.min.css">
+        <link rel="stylesheet" type='text/css' media='screen' href="{% static 'css/main.css' %}">
+    </head>
+
+{% include 'navbar.html' %}
+<body>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+
+    <div class="container" style="max-width: 40vw">
+        <h1>Task Tracker</h1>
+        <br>
+        <br>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <br>
+            <input type="submit" class="btn btn-success">
+        </form>
+        <hr>
+        <hr>
+        <table class="table table-bordered">
+            <tr>
+              <th><p class="text-body">Task</p></th>
+              <th><p class="text-body">Update</p></th>
+              <th><p class="text-body">Delete</p></th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                {% if task.completed == False %}
+                    <td><p class="text-body">{{task.title}}</p></td>
+                    <td><a href="{% url 'update_task' task.id %}"><p class="text-body-tertiary">Update</p></a></td>
+                    <td><a href="{% url 'delete_task' task.id %}"><p class="text-body-tertiary">Delete</p></a></td>
+                    {% else %}
+                    <td><strike class="text-body-tertiary">{{ task.title }}</strike></td>
+                    <td><a href="{% url 'update_task' task.id %}"><strike class="text-body-tertiary">Update</strike></a></td>
+                    <td><a href="{% url 'delete_task' task.id %}"><strike class="text-body-tertiary">Delete</strike></a></td>
+                {% endif %}
+
+
+            {% endfor %}
+            </table>
+            <br>
+            <br>
+</body>
+    
+</html>

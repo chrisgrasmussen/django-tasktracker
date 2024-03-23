@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html class="extra">
+    <head>
+        <link rel="stylesheet" type='text/css' media='screen' href="http://www.bootswatch.com/5/morph/bootstrap.min.css">
+        <link rel="stylesheet" type='text/css' media='screen' href="{% static 'css/main.css' %}">
+    </head>
+
+    <div class="container" style="max-width: 500px">
+        <h1>Login</h1>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{ loginform|crispy }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</html>
